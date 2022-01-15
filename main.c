@@ -31,7 +31,7 @@ enum state {idle, sampling, dft};
 int main(void) {
 	char ampText[5] = "Amp:";
 	char phaseText[7] = "Phase:";
-	
+	int x = 2;
 	double accAmp = 0;
 	double accPhase = 0;
 	
