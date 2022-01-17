@@ -45,8 +45,8 @@ int main(void) {
 	
 	while(1) {
 		if(state == dft) {
-			accAmp = 0.9*accAmp+0.1*fourier(samples)[0];
-			accPhase = 0.9*accPhase+0.1*fourier(samples)[1];
+			accAmp = 0.9*accAmp+0.1*fourier(samples)[0]-refAmp;
+			accPhase = 0.9*accPhase+0.1*fourier(samples)[1]-refPhase;
 			
 			showValues(accAmp,0);
 			showValues(accPhase,1);
