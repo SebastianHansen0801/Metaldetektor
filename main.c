@@ -25,7 +25,7 @@ double * fourier(int * arr);
 
 int samples[numberOfSamples] = {'\0'};
 volatile char state;
-	
+
 enum state {idle, sampling, dft};
 
 int main(void) {
@@ -53,14 +53,12 @@ int main(void) {
 
 ISR(TIMER1_COMPB_vect) {
 	static char sigCounter = 0;
-	if(state == idle) {
-		if (sigCounter == 4) {
-			PORTB^=(1<<PB6);
-			sigCounter = 0;
-			state = sampling;
-		}
-		sigCounter++;
+	if (sigCounter == 4) {
+		PORTB^=(1<<PB6);
+		sigCounter = 0;
+		if(state == idle) state = sampling;
 	}
+	sigCounter++;
 }
 
 ISR(ADC_vect) {
@@ -81,8 +79,8 @@ ISR(ADC_vect) {
 void init() {
 	initTimer1CTC(124,8);
 	initCTCB1ADC(0);
-	DDRB|=(1<<DDB6)|(1<<DDB6);
-	PORTB|=(1<<PB6)|(1<<PB5);
+	DDRB|=(1<<DDB6);
+	PORTB|=(1<<PB6);
 	
 	_i2c_address = 0X78; // write address for i2c interface
 	I2C_Init();  //initialize i2c interface to display

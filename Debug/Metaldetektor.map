@@ -709,14 +709,14 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x3355
+.debug_info     0x0000000000000000     0x3358
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0xbbc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr6/memx-const/crtatmega2560.o
- .debug_info    0x0000000000000bbc      0x321 ADC.o
- .debug_info    0x0000000000000edd      0x484 I2C.o
- .debug_info    0x0000000000001361      0x82d main.o
- .debug_info    0x0000000000001b8e     0x13bf ssd1306.o
- .debug_info    0x0000000000002f4d      0x408 timer.o
+ .debug_info    0x0000000000000bbc      0x324 ADC.o
+ .debug_info    0x0000000000000ee0      0x484 I2C.o
+ .debug_info    0x0000000000001364      0x82d main.o
+ .debug_info    0x0000000000001b91     0x13bf ssd1306.o
+ .debug_info    0x0000000000002f50      0x408 timer.o
 
 .debug_abbrev   0x0000000000000000     0x10c4
  *(.debug_abbrev)
@@ -727,14 +727,14 @@ END GROUP
  .debug_abbrev  0x0000000000000e5a      0x1ec ssd1306.o
  .debug_abbrev  0x0000000000001046       0x7e timer.o
 
-.debug_line     0x0000000000000000     0x1306
+.debug_line     0x0000000000000000     0x130b
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000      0x1fd C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr6/memx-const/crtatmega2560.o
  .debug_line    0x00000000000001fd      0x169 ADC.o
  .debug_line    0x0000000000000366      0x2a7 I2C.o
- .debug_line    0x000000000000060d      0x292 main.o
- .debug_line    0x000000000000089f      0x77e ssd1306.o
- .debug_line    0x000000000000101d      0x2e9 timer.o
+ .debug_line    0x000000000000060d      0x297 main.o
+ .debug_line    0x00000000000008a4      0x77e ssd1306.o
+ .debug_line    0x0000000000001022      0x2e9 timer.o
 
 .debug_frame    0x0000000000000000      0x588
  *(.debug_frame)
@@ -744,14 +744,14 @@ END GROUP
  .debug_frame   0x000000000000021c      0x2f8 ssd1306.o
  .debug_frame   0x0000000000000514       0x74 timer.o
 
-.debug_str      0x0000000000000000      0x4ae
+.debug_str      0x0000000000000000      0x4b1
  *(.debug_str)
  .debug_str     0x0000000000000000      0x3e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr6/memx-const/crtatmega2560.o
  .debug_str     0x00000000000003e6        0x8 ADC.o
  .debug_str     0x00000000000003ee       0x15 I2C.o
- .debug_str     0x0000000000000403       0x4b main.o
- .debug_str     0x000000000000044e       0x3c ssd1306.o
- .debug_str     0x000000000000048a       0x24 timer.o
+ .debug_str     0x0000000000000403       0x4e main.o
+ .debug_str     0x0000000000000451       0x3c ssd1306.o
+ .debug_str     0x000000000000048d       0x24 timer.o
 
 .debug_loc      0x0000000000000000     0x15ab
  *(.debug_loc)
@@ -925,11 +925,11 @@ LOAD data_init
                 0x0000000000001416       0x4e c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/memx-const\libm.a(fp_powser.o)
                 0x0000000000001416                __fp_powser
 
-.text.initCTCB1
+.text.initCTCB1ADC
                 0x0000000000001464       0x4a
- .text.initCTCB1
+ .text.initCTCB1ADC
                 0x0000000000001464       0x4a ADC.o
-                0x0000000000001464                initCTCB1
+                0x0000000000001464                initCTCB1ADC
 
 .text.I2C_Start
                 0x00000000000014ae       0x48

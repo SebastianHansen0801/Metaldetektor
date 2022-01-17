@@ -44,7 +44,7 @@ void initOverflowInt0ADC(char channel) {
 }
 
 //initialize ADC with timer1 comp b as trigger
-void initCTCB1(char channel) {
+void initCTCB1ADC(char channel) {
 	ADMUX = channel;
 	ADMUX|=(1<<REFS0); //internal 5v ref
 	ADCSRA|=(1<<ADEN)|(1<<ADATE)|(1<<ADIE); //enable adc, enable autotrigger, enable interupt, start sample;
