@@ -16,6 +16,7 @@
 #include "timer.h"
 #include "ssd1306.h"
 #include "I2C.h"
+#include "externInt.h"
 
 #define numberOfSamples 64
 
@@ -25,6 +26,7 @@ double * fourier(int * arr);
 
 int samples[numberOfSamples] = {'\0'};
 volatile char state;
+volatile char calibrate = 0;
 
 enum state {idle, sampling, dft};
 
@@ -33,6 +35,8 @@ int main(void) {
 	char phaseText[7] = "Phase:";
 	double accAmp = 0;
 	double accPhase = 0;
+	double refAmp = 0;
+	double refPhase = 0;
 	
 	init();
 	
@@ -46,6 +50,11 @@ int main(void) {
 			
 			showValues(accAmp,0);
 			showValues(accPhase,1);
+			if(calibrate == 1) {
+				calibrate = 0;
+				refAmp = accAmp;
+				refPhase = accPhase;
+			}
 			state = idle;
 		}
 	}
@@ -56,7 +65,7 @@ ISR(TIMER1_COMPB_vect) {
 	if (sigCounter == 4) {
 		PORTB^=(1<<PB6);
 		sigCounter = 0;
-		if(state == idle) state = sampling;
+		if(state == idle && ((PORTB)&(1<<PB6)) == 0b01000000) state = sampling;
 	}
 	sigCounter++;
 }
@@ -75,12 +84,17 @@ ISR(ADC_vect) {
 	}
 }
 
+ISR(INT2_vect) {
+	calibrate = 1;
+}
+
 // function to initialize timer, ADC, display and I/O
 void init() {
 	initTimer1CTC(124,8);
 	initCTCB1ADC(0);
 	DDRB|=(1<<DDB6);
 	PORTB|=(1<<PB6);
+	enable_int2();
 	
 	_i2c_address = 0X78; // write address for i2c interface
 	I2C_Init();  //initialize i2c interface to display

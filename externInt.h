@@ -9,7 +9,7 @@
 #ifndef EXTERNINT_H_
 #define EXTERNINT_H_
 
-void enable_int2();
+void enable_int2(); //pin19
 void disable_int2();
 void enable_int4();
 void disable_int4();
