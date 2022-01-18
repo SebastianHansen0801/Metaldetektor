@@ -40,13 +40,15 @@ int main(void) {
 	
 	init();
 	
+	char testBuffer[100] = {'\0'};
+	
 	sendStrXY(ampText,0,0);
 	sendStrXY(phaseText,1,0);
 	
 	while(1) {
 		if(state == dft) {
-			accAmp = 0.9*accAmp+0.1*fourier(samples)[0]-refAmp;
-			accPhase = 0.9*accPhase+0.1*fourier(samples)[1]-refPhase;
+			accAmp = 0.9*accAmp+0.1*(fourier(samples)[0]-refAmp);
+			accPhase = 0.9*accPhase+0.1*(fourier(samples)[1]-refPhase);
 			
 			showValues(accAmp,0);
 			showValues(accPhase,1);
@@ -55,6 +57,12 @@ int main(void) {
 				refAmp = accAmp;
 				refPhase = accPhase;
 			}
+			sprintf(testBuffer,"%d %d %d",samples[0],samples[1],samples[2]);
+			sendStrXY(testBuffer,3,0);
+			sprintf(testBuffer,"%d %d %d",samples[3],samples[4],samples[5]);
+			sendStrXY(testBuffer,4,0);
+			sprintf(testBuffer,"%d %d",samples[6],samples[7]);
+			sendStrXY(testBuffer,5,0);
 			state = idle;
 		}
 	}
@@ -138,10 +146,3 @@ double * fourier(int * arr) {
 	
 	return result;
 }
-
-
-
-
-
-
-//test commit
